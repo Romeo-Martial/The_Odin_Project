@@ -39,3 +39,54 @@ function getHumanChoice(){
     }
 }
 
+// Declare the players score variables
+let humanScore = 0, computerScore = 0;
+
+// The logic to play a single round of the game
+
+// Choice is one of 
+// - "rock"
+// - "paper"
+// - "scissors"
+// Choice Choice -> Undifined
+// Takes two choices and increment the round's winner choice
+// and display the winner 
+function playRound(humanChoice, computerChoice) {
+    // There are 8 cases; decide with respect to the case the winner 
+    // "rock" "rock"           Tie 
+    // "rock" "paper"      Computer wins 
+    // "rock" "scissors"   Human wins
+    // "paper" "rock"   Human wins
+    // "paper" "paper"     Tie
+    // "paper" "scissors"  Computer wins
+    // "scissors" "rock"   Computer wins
+    // "scissors" "paper"  Human wins
+    // "scissors" "scissors"   Tie
+
+    humanChoice = humanChoice.toLowerCase();
+    computerChoice = computerChoice.toLowerCase();
+    if (humanChoice === computerChoice) {
+        console.log("It's a tie!");
+        return;
+    }
+    if ((humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")) {
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        humanScore++;
+    } else {
+        console.log(`Computer wins! ${computerChoice} beats ${humanChoice}`);
+        computerScore++;
+    }
+}
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+console.log(playRound(humanSelection, computerSelection));
+
+// The logic to play the entire game 
+// Play 5 rounds of the game
+// and display the final score
+function playGame(){
+    
+}
